@@ -2,93 +2,82 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
+      "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "background": "#18354c",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} \ue0b1",
           "foreground": "#ffc107",
-          "properties": {
-            "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} \ue0b1"
-          },
-          "style": "plain",
-          "type": "os"
+          "background": "#18354c",
+          "type": "os",
+          "style": "plain"
         },
         {
-          "background": "#18354c",
+          "template": " \uf0e7 ",
           "foreground": "#ffc107",
-          "properties": {
-            "template": " \uf0e7 "
-          },
-          "style": "plain",
-          "type": "root"
+          "background": "#18354c",
+          "type": "root",
+          "style": "plain"
         },
         {
-          "background": "#18354c",
-          "foreground": "#ffc107",
           "properties": {
             "style": "full",
             "template": " {{ .Path }} "
           },
-          "style": "plain",
-          "type": "path"
+          "foreground": "#ffc107",
+          "background": "#18354c",
+          "type": "path",
+          "style": "plain"
         },
         {
-          "background": "#18354c",
-          "foreground": "#D4E157",
           "properties": {
             "fetch_status": true,
             "template": "<#ffc107>\ue0b1 </>{{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }} "
           },
-          "style": "plain",
-          "type": "git"
+          "foreground": "#D4E157",
+          "background": "#18354c",
+          "type": "git",
+          "style": "plain"
         },
         {
-          "background": "transparent",
+          "template": "\ue0b0",
           "foreground": "#18354c",
-          "properties": {
-            "template": "\ue0b0"
-          },
-          "style": "plain",
-          "type": "text"
+          "background": "transparent",
+          "type": "text",
+          "style": "plain"
         }
-      ],
-      "type": "prompt"
+      ]
     },
     {
+      "type": "prompt",
       "alignment": "right",
       "segments": [
         {
-          "background": "#546E7A",
+		  "template": " {{ .CurrentDate | date .Format }} \uf017 ",
+		  "time_format": "15:04:05",
           "foreground": "#D4E157",
-          "properties": {
-            "template": " {{ .CurrentDate | date .Format }} \uf017 ",
-            "time_format": "15:04:05"
-          },
-          "style": "plain",
-          "type": "time"
+          "background": "#546E7A",
+          "type": "time",
+          "style": "plain"
         }
-      ],
-      "type": "prompt"
+      ]
     },
     {
+      "type": "prompt",
       "alignment": "left",
-      "newline": true,
       "segments": [
         {
+          "template": "❯ ",
           "foreground": "#4186d9",
+          "type": "text",
+          "style": "plain",
           "foreground_templates": [
             "{{ if gt .Code 0 }}#FF5252{{ end }}"
-          ],
-          "properties": {
-            "always_enabled": true,
-            "template": "\u276f"
-          },
-          "style": "plain",
-          "type": "exit"
+          ]
         }
       ],
-      "type": "prompt"
+      "newline": true
     }
   ],
-  "version": 1
+  "version": 3
 }
